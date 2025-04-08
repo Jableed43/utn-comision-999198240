@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: sans-serif;
+  }
+  
+  /* Sticky global */
+  .caja-sticky-global {
+    position: sticky;
+    top: 0;
+    background-color: gold;
+    padding: 15px;
+    font-weight: bold;
+    z-index: 999;
+    border-bottom: 2px solid #999;
+  }
+  
+  /* Static */
+  .caja-static {
+    position: static;
+    background-color: #ddd;
+    padding: 15px;
+    margin: 20px;
+    border-left: 5px solid #888;
+  }
+  
+  /* Relative + Absolute */
+  .contenedor-relative {
+    position: relative;
+    background-color: #eef;
+    height: 200px;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 2px dashed #668;
+    overflow: hidden;
+  }
+  
+  .caja-relative {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    background-color: orange;
+    padding: 10px;
+    width: 200px;
+    font-weight: bold;
+  }
+  
+  .caja-absolute {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: teal;
+    color: white;
+    padding: 10px;
+    width: 220px;
+    font-weight: bold;
+  }
+  
+  /* Fixed */
+  .caja-fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: crimson;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Sticky con límite */
+  .layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    min-height: 150vh;
+  }
+  
+  .sidebar-sticky {
+    position: sticky;
+    top: 60px;
+    background-color: lightseagreen;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    height: fit-content;
+    font-weight: bold;
+  }
+
+  
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 40px;
+  }
+  

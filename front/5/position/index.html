@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ejemplos de Position en CSS</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Sticky global -->
+  <div class="caja-sticky-global">
+    🧷 Sticky Global: me quedo arriba al hacer scroll
+  </div>
+
+  <!-- Static -->
+  <div class="caja-static">
+    🟢 Static: posición por defecto
+  </div>
+
+  <!-- Relative + Absolute -->
+  <div class="contenedor-relative">
+    <div class="caja-relative">🟠 Relative: me muevo desde mi lugar</div>
+    <div class="caja-absolute">🔵 Absolute: dentro del contenedor relative</div>
+  </div>
+
+  <!-- Fixed -->
+  <div class="caja-fixed">
+    🔴 Fixed: siempre visible abajo a la derecha
+  </div>
+
+  <!-- Sticky con límite dentro del layout -->
+  <div class="layout">
+    <div class="sidebar-sticky">
+      🧲 Sticky Sidebar<br>
+      Me acompaño al scrollear<br>
+      Pero me detengo al final del contenedor
+    </div>
+
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Pie de página</p>
+  </footer>
+
+</body>
+</html>

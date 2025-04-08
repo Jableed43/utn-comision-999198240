@@ -1,0 +1,54 @@
+body {
+    font-family: sans-serif;
+    margin: 40px;
+    background-color: #f5f5f5;
+  }
+  
+  h2 {
+    margin-top: 60px;
+  }
+  
+  /* Contenedor Flex */
+  .contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  
+  /* Cajas base */
+  .caja {
+    width: 30%;
+    min-width: 150px;
+    padding: 30px 0;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  /* Colores */
+  .color1 { background-color: #e74c3c; }
+  .color2 { background-color: #3498db; }
+  .color3 { background-color: #2ecc71; }
+  .color4 { background-color: #f39c12; }
+  .color5 { background-color: #9b59b6; }
+  .color6 { background-color: #16a085; }
+  
+  /* Estilos para la segunda fila */
+  .fila-flex .order1 { order: 1; }
+  .fila-flex .order2 { order: 2; }
+  .fila-flex .order3 { order: 3; }
+  .fila-flex .order4 { order: 4; }
+  .fila-flex .order5 { order: 5; }
+  .fila-flex .order6 { order: 6; }
+  
+  .fila-flex .grow0 { flex-grow: 0; }
+  .fila-flex .grow1 { flex-grow: 1; }
+  .fila-flex .grow2 { flex-grow: 2; }
+  
+  .fila-flex .shrink0 { flex-shrink: 0; }
+  .fila-flex .shrink1 { flex-shrink: 1; }
+  .fila-flex .shrink2 { flex-shrink: 2; }
+  

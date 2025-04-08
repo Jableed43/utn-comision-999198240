@@ -1,0 +1,22 @@
+/* ::before y ::after en h1 */
+h1::before {
+    content: "✨ ";
+  }
+  
+  h1::after {
+    content: " ✨";
+  }
+  
+  /* Primera línea del párrafo */
+  p::first-line {
+    color: darkblue;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  
+  /* Placeholder del input */
+  input::placeholder {
+    color: red;
+    font-style: italic;
+  }
+  
