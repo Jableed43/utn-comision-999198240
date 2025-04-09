@@ -1,0 +1,44 @@
+li{
+    border: solid black 2px;
+}
+
+/* Primer hijo */
+li:first-child{
+    color: red;
+    border: none;
+}
+
+/* Ultimo hijo */
+li:last-child{
+    color: blueviolet;
+    border: none;
+}
+
+/* Podemos customizar a cual afectamos */
+/* El tercer hijo */
+li:nth-child(3){
+    font-size: 24px;
+}
+
+/* Afecta cada 5 items empezando desde el primero */
+li:nth-child(5n+1){
+    text-decoration: line-through;
+}
+
+/* Afecta cada tres items */
+li:nth-child(3n){
+    text-transform: uppercase;
+    color: blue;
+}
+/* Afectar items pares */
+li:nth-child(even){
+    background-color: lightgreen;
+}
+/* Afectar items pares */
+li:nth-child(odd){
+    background-color: lightcoral;
+}
+
+li:nth-child(-n+5){
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}

@@ -1,0 +1,25 @@
+h1::before{
+    content: "🎈"
+}
+
+h1::after{
+    content: "🎈"
+}
+
+/* La primer linea del parrafo */
+p::first-line{
+    color: chartreuse;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+span a{
+    color: red;
+    text-decoration: none;
+}
+
+input::placeholder{
+    color: green;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
