@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+header {
+    border-bottom: 2px solid #000;
+}
+
+footer {
+    border-top: 2px solid #000;
+}
+
+section {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+/* Grid Containers */
+.grid-container {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 2px solid #000;
+}
+
+.grid-item {
+    background-color: #4CAF50;
+    border: 2px solid #000;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+/* Contenedor 1: Columnas de igual tamaño */
+.grid-equal-columns {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Contenedor 2: Columnas de tamaño fijo y flexible */
+.grid-fixed-flexible {
+    grid-template-columns: 100px 1fr 2fr 1fr;
+}
+
+/* Contenedor 3: Filas de igual tamaño */
+.grid-equal-rows {
+    grid-template-rows: repeat(4, 100px);
+}
+
+/* Contenedor 4: Filas de tamaño fijo y flexible */
+.grid-fixed-flexible-rows {
+    grid-template-rows: 100px auto 200px 1fr;
+}
+
+/* Contenedor 5: Columnas con fr y tamaño fijo */
+.grid-fr-fixed-mix {
+    grid-template-columns: 2fr 100px 1fr;
+}
+
+/* Contenedor 6: Holy Grail Layout */
+.grid-holy-grail {
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+/* Contenedor 7: minmax con fr */
+.grid-minmax-fr {
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+}
+
+/* Contenedor 8: auto-fit + fr responsivo */
+.grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Contenedor 9: Grid compleja tipo cuadrícula */
+.grid-complex-layout {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 150px);
+}
+
+/* Un cuadrado grande que ocupa 4 espacios (2x2) */
+.item-a {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Otros items para completar la cuadrícula */
+.item-b {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+
+.item-c {
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+}
+
+.item-d {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+
+.item-e {
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+}
+
+.item-f {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+.item-g {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+.item-h {
+    grid-column: 3 / 5;
+    grid-row: 3 / 5;
+}
+
+.item-i {
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
+}

@@ -11,6 +11,7 @@ p::first-line{
     color: chartreuse;
     font-weight: bold;
     font-size: 30px;
+    display: flex;
 }
 
 span a{
