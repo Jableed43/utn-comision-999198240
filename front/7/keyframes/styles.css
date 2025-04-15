@@ -1,0 +1,138 @@
+body {
+    font-family: sans-serif;
+    display: grid;
+    gap: 2rem;
+    padding: 2rem;
+    background: #f0f0f0;
+  }
+  
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .direccion-normal img, .direccion-reverse img, .direccion-alternate img, .repetir-tres img, .repetir-infinito img {
+    width: 100px;
+    object-fit: contain;
+  }
+  
+  /* ---------------------- */
+  /* 1. animation-name, duration, delay */
+  .animacion-basica:hover {
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* ---------------------- */
+  /* 2. fill-mode */
+  /* Al terminar la animación, se queda con el estilo final (to). */
+  .fill-forwards:hover {
+    animation: crecer 2s forwards;
+  }
+  
+  /* Durante el delay, muestra el estilo inicial (from) antes de que empiece a animar. */
+  .fill-backwards:hover {
+    animation: crecer 2s 1s backwards;
+  }
+  
+  /* Aplica backwards + forwards. O sea, muestra el from durante el delay, y mantiene el to al final. */
+  .fill-both:hover {
+    animation: crecer 2s 1s both;
+  }
+
+  /* El elemento no aplica ningún estilo del @keyframes ni antes ni después. Solo durante la animación. */
+  .fill-none:hover {
+    animation: crecer 2s 1s none;
+  }
+  
+  @keyframes crecer {
+    from { transform: scale(0.5); background-color: tomato; }
+    to { transform: scale(1.5); background-color: green; }
+  }
+  
+  /* ---------------------- */
+  /* 3. direction */
+  .direccion-normal:hover {
+    animation: girar 2s infinite normal linear;
+  }
+  
+  .direccion-reverse:hover {
+    animation: girar 2s infinite reverse linear;
+  }
+  
+  .direccion-alternate:hover {
+    animation: girar 2s infinite alternate linear;
+  }
+
+
+  
+  @keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* ---------------------- */
+  /* 4. iteration-count */
+  .repetir-tres:hover {
+    animation: saltar 1s 3;
+  }
+  
+  .repetir-infinito:hover {
+    animation: saltar 1s infinite;
+  }
+  
+  @keyframes saltar {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+    100% { transform: translateY(0); }
+  }
+  
+  /* ---------------------- */
+  /* 5. transform */
+  .transformaciones:hover {
+    transform: translateX(50px) rotate(15deg) scale(1.2) skew(10deg, 5deg);
+    background-color: purple;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  /* ---------------------- */
+  /* 6. 3D perspective */
+  .perspectiva-container {
+    perspective: 800px;
+  }
+  
+  .box-3d:hover {
+    animation: rotarY 3s infinite alternate ease-in-out;
+    transform-style: preserve-3d;
+  }
+  
+  @keyframes rotarY {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(180deg); }
+  }
+  
+  /* ---------------------- */
+  /* 7. transition */
+  .transicion {
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .transicion:hover {
+    background-color: orange;
+    transform: scale(1.3) rotate(20deg);
+  }
+  

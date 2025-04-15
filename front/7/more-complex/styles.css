@@ -1,0 +1,119 @@
+body {
+    font-family: sans-serif;
+    background-color: #f7f7f7;
+    padding: 20px;
+  }
+  
+  h2 {
+    margin-top: 40px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+  }
+  
+  .box {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    display: inline-block;
+    background-color: #3498db;
+    transition: all 0.3s ease;
+  }
+  
+  /* 1. Heartbeat - efecto de latido */
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+  .heartbeat:hover {
+    animation: heartbeat 0.6s infinite;
+  }
+  
+  /* 2. Cambio de color tipo arcoiris */
+  @keyframes rainbow {
+    0% { background-color: red; }
+    25% { background-color: orange; }
+    50% { background-color: yellow; }
+    75% { background-color: green; }
+    100% { background-color: blue; }
+  }
+  .rainbow:hover {
+    animation: rainbow 2s infinite linear;
+  }
+  
+  /* 3. Spinner de carga */
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .spinner {
+    border-radius: 50%;
+    border: 5px solid #ccc;
+    border-top-color: #3498db;
+  }
+  .spinner:hover {
+    animation: spin 1s linear infinite;
+  }
+  
+  /* 4. Deslizamiento hacia arriba */
+  @keyframes slideUp {
+    from {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .slide-up:hover {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  /* 5. Burbuja que desaparece */
+  @keyframes bubble {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.3);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+  }
+  .bubble:hover {
+    animation: bubble 0.6s ease-out forwards;
+  }
+  
+  /* 6. Despegue vertical */
+  @keyframes liftOff {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-300px);
+      opacity: 0;
+    }
+  }
+  .rocket:hover {
+    animation: liftOff 1.5s ease-in forwards;
+  }
+
+  .rocket img, .heartbeat img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* 7. Pulso infinito con delay */
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  .pulse:hover {
+    animation: pulse 1.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+  

@@ -1,0 +1,111 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  /* Estilos del header */
+  .header {
+    background-color: #3498db;
+    padding: 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  
+  /* Estilos del footer */
+  .footer {
+    background-color: #2c3e50;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    margin-top: auto;
+  }
+  
+  /* Estilos del content */
+  .content {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    gap: 20px;
+  }
+  
+  /* Estilos de las cajas */
+  .box {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /* Transiciones específicas para cada caja */
+  .transition-all {
+    background-color: #3498db;
+  }
+  
+  .transition-all:hover {
+    background-color: #0a4a76;
+    transform: scale(1.1);
+    transition-duration: 5s;
+  }
+  
+  .transition-width {
+    background-color: #e74c3c;
+    width: 150px;
+  }
+  
+  .transition-width:hover {
+    width: 200px;
+  }
+  
+  .transition-color {
+    background-color: #2ecc71;
+  }
+  
+  .transition-color:hover {
+    background-color: #06421f;
+  }
+  
+  .transition-duration {
+    background-color: #f39c12;
+  }
+  
+  .transition-duration:hover {
+    background-color: #820909;
+    transition-duration: 5s;
+  }
+  
+  .transition-delay {
+    background-color: #8e44ad;
+  }
+  
+  .transition-delay:hover {
+    background-color: #fff701;
+    transition-delay: 2s;
+  }
+  
+  /* cubic-bezier(propiedad duración timing-function delay) */
+  .transition-timing {
+    background-color: #34495e;
+    transition: background-color 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  }
+  
+  .transition-timing:hover {
+    background-color: #8cb1d6;
+  }
+  
