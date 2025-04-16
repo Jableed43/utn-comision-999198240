@@ -32,6 +32,7 @@ body {
     animation-delay: 0.5s;
   }
   
+  /* Keyframe define como funciona la animacion en terminos de pasos */
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }

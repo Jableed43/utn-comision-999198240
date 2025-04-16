@@ -1,0 +1,46 @@
+.box {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    background-color: rgb(26, 137, 137);
+    color: black;
+}
+
+/* Efecto fade in */
+.fade-in {
+    animation: fadeIn 4s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Moverse a la derecha */
+.moveRight {
+    animation-duration: 4s;
+    animation-name: moveRight;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes moveRight {
+    from { transform: translateX(0); }
+    to { transform: translateX(200px); }
+}
+        
+
+/* Crecer, achicarse - pulse */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+0% { transform: scale(1); } 
+50% { transform: scale(1.2); }
+100% { transform: scale(1); }
+}
+    
