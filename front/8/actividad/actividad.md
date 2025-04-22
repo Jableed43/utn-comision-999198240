@@ -22,6 +22,7 @@ Diseñar una **tarjeta personal responsiva** con HTML, CSS y media queries, incl
     }
   </script>
    ```
+   
 2. Estilos:
    - Borde visible en la tarjeta
    - Efecto de **hover** con `transform: scale(1.2)` sobre el contenedor
