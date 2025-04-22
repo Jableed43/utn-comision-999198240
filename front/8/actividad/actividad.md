@@ -16,11 +16,11 @@ Diseñar una **tarjeta personal responsiva** con HTML, CSS y media queries, incl
    ```
     onclick="saludar()"
 
-     <script>
+        <script>
     function saludar() {
       alert("Hola! Soy ...");
     }
-  </script>
+        </script>
    ```
 
 2. Estilos:
