@@ -43,5 +43,4 @@ Diseñar una **tarjeta personal responsiva** con HTML, CSS y media queries, incl
 
 ### Posibles mejoras o retos extra:
 - Agregar más breakpoints (`max-width: 480px`, `min-width: 1024px`) para practicar aún más.
-- Usar `@supports` para aplicar un efecto extra si el navegador lo permite.
-- Personalizar la tarjeta con `box-shadow`, fuentes de Google o `:focus-visible`.
+- Personalizar la tarjeta con `box-shadow`, fuentes de Google 
