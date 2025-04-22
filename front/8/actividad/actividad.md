@@ -14,7 +14,6 @@ Diseñar una **tarjeta personal responsiva** con HTML, CSS y media queries, incl
    - Un **botón** que al hacer clic diga: `Hola! Soy <tu nombre>` utilizando:
 
    ```
-
     onclick="saludar()"
 
      <script>
@@ -22,7 +21,6 @@ Diseñar una **tarjeta personal responsiva** con HTML, CSS y media queries, incl
       alert("Hola! Soy ...");
     }
   </script>
-
    ```
 
 2. Estilos:
