@@ -14,7 +14,7 @@ Diseñar una **tarjeta personal responsiva** con HTML, CSS y media queries, incl
    - Un **botón** que al hacer clic diga: `Hola! Soy <tu nombre>` utilizando:
 
    ```
-    onclick="saludar()"
+     <button onclick="saludar()">¡Saludame!</button>
 
         <script>
     function saludar() {
@@ -25,10 +25,10 @@ Diseñar una **tarjeta personal responsiva** con HTML, CSS y media queries, incl
 
 2. Estilos:
    - Borde visible en la tarjeta
-   - Efecto de **hover** con `transform: scale(1.2)` sobre el contenedor
+   - Efecto de **hover** el que quieran, x ej `transform: scale(1.2)` sobre el contenedor
 3. Responsividad:
-   - En pantallas chicas (modo *portrait*), el diseño debe parecer **un rectángulo acostado**: imagen a la izquierda, texto a la derecha.
-   - En pantallas grandes, se verá vertical.
+   - En en modo portrait, el diseño debe parecer **un rectángulo de pie** - mas alto que ancho. Vertical.
+   - En modo landscape el diseño debe parecer **un rectángulo acostado** - mas ancho que alto. Horizontal.
 
 ---
 
@@ -43,4 +43,4 @@ Diseñar una **tarjeta personal responsiva** con HTML, CSS y media queries, incl
 
 ### Posibles mejoras o retos extra:
 - Agregar más breakpoints (`max-width: 480px`, `min-width: 1024px`) para practicar aún más.
-- Personalizar la tarjeta con `box-shadow`, fuentes de Google 
+- Personalizar la tarjeta con `box-shadow`, fuentes de Google.

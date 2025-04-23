@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    background-color: beige;
+}
+nav{
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+    background-color: #6A9AB0;
+    color: white;
+}
+#logo{
+    width: 70px;
+}
+ul{
+    display: flex;
+    list-style: none;
+    gap:40px
+}
+main{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 100px 20px;
+    row-gap: 80px;
+}
+.tarjeta{
+    width: 300px;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+   gap: 10px;
+   box-shadow: 2px 2px 5px gray;
+}
+
+.tarjeta p, .tarjeta a{
+    font-size: 1.7rem;
+    text-align: center;
+    }
+
+ul li{
+    font-size: 1.2rem;
+}
+
+.tarjeta-img{
+    width: 100%;
+}
+.btn-mas{
+    padding: 20px;
+}
+
+footer{
+    background-color:#001F3F;
+    padding: 50px 20px;
+}
+
+form{
+    background-color: #FCDE70;
+    width: 400px;
+    padding: 40px;
+    border-radius: 10px;
+}
+footer>p{
+    color: white;
+}
+
+@media (max-width: 500px){
+    main {
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+    }
+
+    footer form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 670px){
+    .tarjeta{
+        width: 90%;
+    }
+}
