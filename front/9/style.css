@@ -1,0 +1,11 @@
+.contenido{
+    width: 100%;
+    background-color: brown;
+    height: 300px;
+    border: solid black 2px;
+}
+
+p{
+    color: white;
+    font-size: 32px;
+}
