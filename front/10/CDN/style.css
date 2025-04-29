@@ -1,0 +1,47 @@
+h1, h2, h3, h4{
+    color: rgb(23, 24, 23);
+    text-align: center;
+}
+
+.carousel-item img {
+    width: 80vw !important;
+    height: 64vh;
+    margin: auto;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon{
+    filter: invert(1);
+}
+
+table, section{
+    max-width: 80vw;
+    margin: 40px auto !important;
+}
+
+.form-img{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.el-rayo{
+    width: 30%;
+}
+
+
+/* Lista */
+.section-novedades{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.list-group{
+    width: 400px;
+}
+
+.img-novedades{
+    width: 75px;
+}
