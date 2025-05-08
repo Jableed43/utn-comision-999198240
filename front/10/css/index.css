@@ -1,6 +1,17 @@
 /* Main */
+body{
+    display: flex;
+    flex-direction: column;
+}
+
 body.index main{
-    margin-bottom: 18vh;
+    /* margin-bottom: 18vh; */
+    /* flex: 1 ocupa todo el espacio vertical que queda entre el header (si tenés uno) y el footer, empujando el footer al fondo sin necesidad de position: fixed. */
+    flex: 1;
+    padding-bottom: 50px;
+    display: inherit;
+    flex-direction: column;
+    gap: 50px;
 }
 
 /* Navbar */
@@ -10,34 +21,43 @@ body.index main{
 }
 
 /* Hero */
-.hero-container{
-    background-image: url(../assets/img/hero-image2.jpg);
-    height: 70vh;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 1;
+.hero-container {
     position: relative;
-    color: white;
-}
-
-.hero-container::before{
-    background: rgba(0, 0 ,0 , 0.5);
-    z-index: -1;
     width: 100%;
-    height: 100%;
+    height: 70vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-image: url(../assets/img/hero-image2.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  
+  .hero-container::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    content: "";
-}
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+  }
 
-.hero-text{
+  .hero-container > * {
+    position: relative;
+    z-index: 1;
+  }
+
+/* .hero-text{
     position: relative;
     top: 50%;
     left: 10%;
     width: 50%;
-}
+} */
 
 .hero-text h1{
     font-size: 3rem;
@@ -57,7 +77,8 @@ body.index main{
 }
 
 .index main .list-group ul{
-    width: 40%;
+    width: 80%;
+    padding: 0;
 }
 
 /* Cards */
@@ -70,25 +91,91 @@ body.index main{
 }
 
 .card-container .card{
-    width: 20% !important;
+    min-width: 20% !important;
     align-items: center;
+    transition: all 0.7s ease-in;
+}
+
+.card-container .card:hover{
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.index main .card-container .card img{
+    width: 100%;
+}
+
+/* galeria */
+.gallery-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.gallery-container div{
+    width: 24%;
+    border: solid black 3px;
+    overflow: hidden;
+}
+
+.gallery-container div img{
+    width: 100%;
+    transition: all 1s ease-in;
+}
+
+.gallery-container div:hover img{
+    transform: scale(1.1);
+}
+
+
+/* Form */
+form{
+    justify-self: center;
+    background: darkgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50vw;
+}
+
+form div, form fieldset{
+    width: 70%;
+}
+
+.form-button-container, .fhorm-ceck{
+    margin: auto;
+    width: auto;
+    padding: 10px 0;
 }
 
 /* Footer */
 
-footer{
+/* footer{
     position: fixed;
     bottom: 0;
     width: 100vw;
     background: white;
     z-index: 10;
-}
+} */
+
+footer {
+    border-top: 1px solid gray;
+    background: white;
+    width: 100%;
+  }
 
 
-/* Mediaqueries */
+/* Mediaqueries *780px* */
 
-@media (max-width: 1280px){
+/* @media (max-width: 1280px){
     .hero-container{
         background-size: contain;
+    }
+} */
+
+@media (max-width: 768px){
+    .hero-container {
+        height: 35vh;
     }
 }
