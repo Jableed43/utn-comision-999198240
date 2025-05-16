@@ -42,7 +42,7 @@ let persona =
  }
 
 //array - lista - arreglo
-let array = [1, 2, 3, 4, 5, 6, false, "javier", { clave: "valor", clave2: "valor2" }, [0, 2], null ]
+let array = [1, 2, 3, 4, 5, 6, false, "javier", { clave: "valor", clave2: "valor2" }, [0, 2], null]
 
 //Variables
 

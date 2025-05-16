@@ -10,7 +10,7 @@ if(!(variable)){
 
 //Valores Truthy
 
-let truthy = [true, 10, "N", [], {}, Symbol, function(){}, 1n]
+let truthy = [true, 10, 1, "N", [], {}, Symbol, function(){}, 1n]
 
 let variable2 = {}
 if(variable2){

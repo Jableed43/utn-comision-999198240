@@ -30,12 +30,12 @@ let viento = "mucho"
 let plata = "mucha"
 
 if(clima === "llueve" && viento === "mucho" && plata !== "mucha"){
-    console.log("No salgo de joda y me quedo en casa")
+    console.log("No salgo de fiesta y me quedo en casa")
 } else {
-    console.log("Salgo de joda loca")
+    console.log("Salgo de fiesta")
 }
 
-if(clima !== "soleado" || viento !== "mucho"){
+if(clima == "soleado" || viento !== "mucho"){
     console.log("Salgo de picnic")
 } else {
     console.log("Me quedo en casa mirando netflix")
