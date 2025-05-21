@@ -10,6 +10,11 @@
 function tipoDeDato(valor) {
    return typeof valor
 }
+
+module.exports = {
+   tipoDeDato
+}
+
 let valor = 4546
 let valor2 = "hola"
 
