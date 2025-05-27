@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo DOM Completo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Ejemplo con métodos del DOM</h1>
+
+  <div>
+    <button onclick="crearElemento()">Crear Elemento</button>
+    <button onclick="insertarAntes()">Insertar Antes</button>
+    <button onclick="reemplazarElemento()">Reemplazar</button>
+    <button onclick="eliminarElemento()">Eliminar</button>
+    <button onclick="modificarTexto()">textContent vs innerHTML</button>
+    <br><br>
+    <button onclick="verAtributo()">getAttribute</button>
+    <button onclick="agregarAtributo()">setAttribute</button>
+    <button onclick="quitarAtributo()">removeAttribute</button>
+  </div>
+
+  <div id="contenedor">
+    <p id="elemento-inicial" class="item">Elemento inicial</p>
+  </div>
+
+  <div id="log" class="log">Log:</div>
+<script src="index.js"></script>
+</body>
+</html>

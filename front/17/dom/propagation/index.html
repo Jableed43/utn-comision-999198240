@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Propagación de Eventos en el DOM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Propagación de eventos en el DOM</h1>
+
+  <div id="div-externo" class="caja">
+    DIV EXTERNO
+    <div id="div-interno" class="caja">
+      DIV INTERNO
+    </div>
+  </div>
+
+  <button onclick="limpiarLog()">Limpiar consola</button>
+  <div class="log" id="consola">Log:</div>
+
+<script src="index.js"></script>
+</body>
+</html>
