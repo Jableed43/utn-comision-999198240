@@ -8,14 +8,17 @@
 <body>
   <h1>Propagación de eventos en el DOM</h1>
 
+  <div id="div-externo-externo" class="caja">
+     DIV EXTERNO-X
   <div id="div-externo" class="caja">
     DIV EXTERNO
     <div id="div-interno" class="caja">
       DIV INTERNO
     </div>
   </div>
+  </div>
 
-  <button onclick="limpiarLog()">Limpiar consola</button>
+  <button onclick=" (e) => limpiarLog(e)  ">Limpiar consola</button>
   <div class="log" id="consola">Log:</div>
 
 <script src="index.js"></script>
