@@ -1,27 +1,73 @@
+import { useState } from "react";
 import './App.css'
-import { useState } from 'react'
 
 function App() {
-  //Estado, setEstado
-  const [contenido, setContenido] = useState("Soy contenido inicial")
+  //Estados
+  const [num1, setNum1] = useState(0);
+  const [num2, setNum2] = useState(0);
+  const [resultado, setResultado] = useState(0);
 
-  //manejador
-  const handleContenido = () => {
-    if(contenido === " "){
-      setContenido("Soy contenido")
-    } else {
-      setContenido(" ")
+  //funcion que hace las cuentas
+  const handleOperation = operation => {
+    if (operation === "dividir") {
+      if (num1 < num2) {
+        console.log("No puede dividir un numero mayor al numero menor");
+      }
     }
-  }
+    switch (operation) {
+      case "suma":
+        setResultado(num1 + num2);
+        break;
+
+      case "resta":
+        setResultado(num1 - num2);
+        break;
+
+      case "multiplicar":
+        setResultado(num1 * num2);
+        break;
+
+      case "dividir":
+        setResultado(num1 / num2);
+        break;
+
+      default:
+        setResultado(0);
+        break;
+    }
+  };
 
   return (
+    <div className="calculator-wrapper">
+      <label htmlFor="number-1" >Numero 1</label>
+      <input
+        id="number-1"
+        type="number"
+        onChange={evento => setNum1(Number(evento.target.value))}
+      />
 
-      <>
-        <p> {contenido} </p>
-        <button onClick={ handleContenido } > Cambiar contenido </button>
-      </>
+      <label htmlFor="number-2">Numero 2</label>
+      <input
+        id="number-2"
+        type="number"
+        onChange={evento => setNum2(Number(evento.target.value))}
+      />
+  <div className="button-wrapper">
+      <button onClick={() => handleOperation("suma")}>Suma</button>
+      <button onClick={() => handleOperation("resta")}>Resta</button>
+      <button onClick={() => handleOperation("multiplicar")}>
+        Multiplicar
+      </button>
+      <button onClick={() => handleOperation("dividir")}>Dividir</button>
+  </div>
 
-  )
+      <div className="result-container">
+        <label>Resultado</label>
+        <br />
+        <span>{resultado}</span>
+      </div>
+    </div>
+  );
 }
 
-export default App 
+export default App;

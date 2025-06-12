@@ -1,0 +1,15 @@
+.calculator-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-wrapper{
+    display: flex;
+    gap: 9px;
+    margin: 10px;
+}
+
+.result-container{
+    text-align: center;
+}
