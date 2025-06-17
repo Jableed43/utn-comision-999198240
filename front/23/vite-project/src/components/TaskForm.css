@@ -1,0 +1,28 @@
+/* src/components/TaskForm.css */
+.task-form {
+    margin-bottom: 20px;
+    display: flex; /* Para alinear el input y el botón */
+}
+
+.task-form-input {
+    flex-grow: 1; /* Para que ocupe el espacio disponible */
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.task-form-button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+.task-form-button:hover {
+    background-color: #45a049;
+}

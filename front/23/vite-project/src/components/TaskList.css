@@ -1,0 +1,12 @@
+/* src/components/TaskList.css */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Asegurarse de que no haya margen por defecto */
+}
+
+.no-tasks-message {
+    text-align: center;
+    color: #666;
+    padding: 20px 0;
+}

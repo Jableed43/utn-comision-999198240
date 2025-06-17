@@ -1,0 +1,42 @@
+/* src/components/TaskItem.css */
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.task-item:last-child {
+    border-bottom: none; /* No queremos borde en el último elemento */
+}
+
+.task-item-checkbox {
+    margin-right: 10px;
+    transform: scale(1.2); /* Hace el checkbox un poco más grande */
+}
+
+.task-item-text {
+    flex-grow: 1;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.task-item-text.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task-item-delete-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+.task-item-delete-button:hover {
+    background-color: #da190b;
+}
