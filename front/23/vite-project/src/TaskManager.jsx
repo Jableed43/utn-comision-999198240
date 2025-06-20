@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import TaskForm from './components/TaskForm'
+import TaskList from './components/TaskList'
 //Va a manejar el estado de las tareas
 //a las tareas las va a guardar y las va a consultar - localStorage
 //Contiene funciones para añadir, marcar como completas y borrar las tareas
@@ -7,22 +9,24 @@ import React, { useEffect, useState } from 'react'
 const LOCAL_STORAGE_KEY = "react-simple-todo-tasks"
 
 function TaskManager() {
+  //Estado de las tareas
   const [tasks, setTasks] = useState([])
-
-  //Busca el listado de tareas en localStorage, si existe setea el estado con las tareas existentes
-  useEffect(() => {
-    const storedTasks = localStorage.getItem(LOCAL_STORAGE_KEY)
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks))
-    }
-  }, [])
-
+  
   //Se guarda como string -  JSON.stringify lo guarda como json
   // JSON.parse lo convierte a js para poder iterarlo y acceder a metodos nativos o propiedades
   // Crea el espacio en localStorage, ademas guarda los datos nuevos
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks))
-  }, [tasks])
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
+    }, [tasks]);
+  
+  //Busca el listado de tareas en localStorage, si existe setea el estado con las tareas existentes
+    useEffect(() => {
+        const storedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (storedTasks) {
+            setTasks(JSON.parse(storedTasks));
+        }
+    }, []);
+
 
   //Funcion para añadir la tarea
   const handleAddTask = (text) => {
@@ -58,7 +62,17 @@ function TaskManager() {
   }
 
   return (
-    <div>TaskManager</div>
+    <div className='app-container'>
+
+    <h1 className='app-title'> Mi lista de tareas </h1>
+
+    {/* TaskForm */}
+    <TaskForm onAddTask={handleAddTask} />
+
+    {/* List */}
+    <TaskList onDeleteTask={handleDeleteTask} onToggleComplete={handleToggleComplete} tasks={tasks} />
+
+    </div>
   )
 }
 
