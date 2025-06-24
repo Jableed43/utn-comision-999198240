@@ -1,79 +1,53 @@
-import React, { useEffect, useState } from 'react'
-import TaskForm from './components/TaskForm'
-import TaskList from './components/TaskList'
-//Va a manejar el estado de las tareas
-//a las tareas las va a guardar y las va a consultar - localStorage
-//Contiene funciones para añadir, marcar como completas y borrar las tareas
+// src/TaskManager.jsx
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'; // Importa los hooks de Redux para interactuar con el Store
+import { setTasks } from './features/tasks/tasksSlice'; // Importa la acción setTasks para cargar el estado inicial
+import TaskForm from './components/TaskForm'; // Asegúrate de que la ruta sea correcta
+import TaskList from './components/TaskList'; // Asegúrate de que la ruta sea correcta
+import './TaskManager.css'; // Asegúrate de tener tu archivo CSS para TaskManager
 
-//lo ideal es pasarlo a variable de entorno
-const LOCAL_STORAGE_KEY = "react-simple-todo-tasks"
+// Define la clave para localStorage, como en tu código original
+const LOCAL_STORAGE_KEY = "react-simple-todo-tasks";
 
 function TaskManager() {
-  //Estado de las tareas
-  const [tasks, setTasks] = useState([])
-  
-  //Se guarda como string -  JSON.stringify lo guarda como json
-  // JSON.parse lo convierte a js para poder iterarlo y acceder a metodos nativos o propiedades
-  // Crea el espacio en localStorage, ademas guarda los datos nuevos
-    useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
-    }, [tasks]);
-  
-  //Busca el listado de tareas en localStorage, si existe setea el estado con las tareas existentes
-    useEffect(() => {
-        const storedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (storedTasks) {
-            setTasks(JSON.parse(storedTasks));
-        }
-    }, []);
+  const dispatch = useDispatch(); // Hook para obtener la función 'dispatch' para enviar acciones al Store
+  const tasks = useSelector(state => state.tasks); // Hook para seleccionar el estado 'tasks' del Store de Redux
 
+  // Efecto para cargar las tareas desde localStorage al inicio de la aplicación.
+  // Este useEffect se ejecuta una única vez al montar el componente.
+  useEffect(() => {
+    const storedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (storedTasks) {
+      try {
+        const parsedTasks = JSON.parse(storedTasks);
+        // Despacha la acción 'setTasks' para inicializar el estado de Redux con las tareas cargadas.
+        dispatch(setTasks(parsedTasks));
+      } catch (error) {
+        console.error("Error al parsear tareas de localStorage:", error);
+        // Si hay un error al parsear, inicializa con un array vacío para evitar problemas
+        dispatch(setTasks([]));
+      }
+    }
+  }, [dispatch]); // La dependencia 'dispatch' asegura que el efecto no se ejecute innecesariamente
 
-  //Funcion para añadir la tarea
-  const handleAddTask = (text) => {
-    // Tarea -> texto, completed, id
-    // id
-    const newId = String(Date.now())
-    // Armamos nuestro objeto tarea
-    const newTask = { id: newId, text, completed: false }
-    // prevTasks son las tareas ya existentes en el estado
-    // usamos el spread operator para abrir el array para introducir la nueva tarea
-    // Esta forma permite añadir a las anteriores la nueva
-    setTasks((prevTasks) => [...prevTasks, newTask])
-  }
-
-  //Funcion para marcar completa/ imcompleta - toggle
-  const handleToggleComplete = (id) => {
-    setTasks((prevTasks) =>
-      //validamos que el id que nos llega se encuentra en nuestro listado
-      prevTasks.map((task) =>
-        // Abrir - spread a la tarea con el id que me llegó
-        // el id que me llega por parametro coincide con alguno que tengo en mi estado?
-        // si coincide le cambiamos el completed al valor booleano opuesto true->false, false->true
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
-    )
-  }
-
-  //Funcion para borrar la tarea
-  const handleDeleteTask = (id) => {
-    // Filter retorna un nuevo array
-    // Con el filter borramos porque dejamos afuera los registros que coincidan con el id del parametro
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id))
-  }
+  // Efecto para guardar las tareas en localStorage cada vez que el estado 'tasks' cambia en Redux.
+  // Este useEffect se ejecuta cada vez que el array 'tasks' (obtenido de Redux) cambia.
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
+  }, [tasks]); // La dependencia 'tasks' hace que el efecto se re-ejecute cuando las tareas cambien
 
   return (
     <div className='app-container'>
+      <h1 className='app-title'> Mi lista de tareas </h1>
 
-    <h1 className='app-title'> Mi lista de tareas </h1>
+      {/* TaskForm ya no necesita la prop onAddTask, ya que despachará la acción directamente a Redux */}
+      <TaskForm />
 
-    {/* TaskForm */}
-    <TaskForm onAddTask={handleAddTask} />
-
-    {/* List */}
-    <TaskList onDeleteTask={handleDeleteTask} onToggleComplete={handleToggleComplete} tasks={tasks} />
-
+      {/* TaskList ya no necesita las props tasks, onDeleteTask, onToggleComplete,
+          ya que accederá al estado y despachará acciones directamente desde Redux a través de TaskItem */}
+      <TaskList />
     </div>
-  )
+  );
 }
 
-export default TaskManager
+export default TaskManager;
