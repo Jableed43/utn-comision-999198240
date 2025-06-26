@@ -4,6 +4,7 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import HomePage from './pages/HomePage.jsx'
 import CharactersPage from './pages/CharactersPage.jsx'
+import CharacterDetail from './components/CharacterDetail.jsx'
 
 //Definir las rutas de nuestra aplicacion
 const router = createBrowserRouter([
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
       {
         path: "/characters",
         element: <CharactersPage />
-      }
+      },
+      {
+        path: "/characters/:id", // Nueva ruta dinámica para el detalle del personaje
+        element: <CharacterDetail />,
+      },
     ]
   }
 ])
