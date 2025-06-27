@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 function Characters({ characters }) {
+  const navigate = useNavigate()
 
     //Validamos que characters no este vacio ni undefined
     if(!characters || characters.length === 0){
@@ -16,7 +18,7 @@ function Characters({ characters }) {
     <div className='row' >
         {characters.map((character) => (
             <div key={character.id} className='col mb-5' >
-                <div className='card' style={{ minWidth: '200px' }} >
+                <div className='card' onClick={ () => navigate(`/characters/${character.id}`) } style={{ minWidth: '200px', cursor: 'pointer' }} >
                 <img src={character.image} alt={character.name} />
                 <div className='card-body'>
                     <h5 className='card-title' > {character.name} </h5>
