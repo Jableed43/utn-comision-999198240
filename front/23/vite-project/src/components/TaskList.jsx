@@ -1,9 +1,13 @@
+import { useSelector } from 'react-redux';
 import TaskItem from './TaskItem';
 import './TaskList.css';
 import PropTypes from 'prop-types';
 
-const TaskList = ({ tasks, onToggleComplete, onDeleteTask }) => {
-   
+const TaskList = () => {
+
+  //Hook para Seleccionar el estado del store - El estado de tareas
+  const tasks = useSelector((state) => state.tasks)
+
     //rederizado condicional
     //empty-state
     if(tasks.length === 0){
@@ -17,24 +21,11 @@ const TaskList = ({ tasks, onToggleComplete, onDeleteTask }) => {
                 <TaskItem 
                 key={task.id}
                 task={task}
-                onDeleteTask={onDeleteTask}
-                onToggleComplete={onToggleComplete}
+//   Las props onDeleteTask y onToggleComplete se quitan y ahora se despachan directamente a redux
                 />
              )) }
         </ul>
     )
-};
-
-TaskList.propTypes = {
-    tasks: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired,
-            completed: PropTypes.bool.isRequired,
-        })
-    ).isRequired,
-    onToggleComplete: PropTypes.func.isRequired,
-    onDeleteTask: PropTypes.func.isRequired,
 };
 
 export default TaskList;

@@ -7,7 +7,6 @@ const taskSlice = createSlice({
     // Nombre del slice
     name: 'tasks',
     initialState,
-
     //reducers -> funciones que especifican como el estado debe cambiar
     reducers: {
         //añadir tarea
