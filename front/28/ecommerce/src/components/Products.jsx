@@ -1,34 +1,22 @@
 import { Typography, Grid, Card, CardContent } from '@mui/material'
 import React from 'react'
+import useGetProducts from '../hooks/products/useGetProducts'
 
 function Products() {
 
-    const products = [
-        {
-            name: 'Producto 1',
-            price: 'Precio 1',
-            description: 'Descripcion 1',
-            category: 'Categoria 1'
-        },
-         {
-            name: 'Producto 2',
-            price: 'Precio 2',
-            description: 'Descripcion 2',
-            category: 'Categoria 2'
-        },
-         {
-            name: 'Producto 3',
-            price: 'Precio 3',
-            description: 'Descripcion 3',
-            category: 'Categoria 3'
-        },
-         {
-            name: 'Producto 4',
-            price: 'Precio 4',
-            description: 'Descripcion 4',
-            category: 'Categoria 4'
-        }
-    ]
+    const {error, loading, products} = useGetProducts()
+
+    if(loading){
+        return ( <h2> Cargando productos </h2> )
+    }
+
+    if(error){
+        return ( <h2> {error} </h2> )
+    }
+
+    if(!products || products.length === 0){
+        return ( <h2>No hay productos disponibles</h2> )
+    }
 
   return (
     <>
@@ -36,25 +24,35 @@ function Products() {
         Products
     </Typography>
 
-    <Grid container spacing={3} >
+    <Grid container spacing={3} flexDirection={'row'} justifyContent={'center'} >
         { products.map((product) => (
-        <Grid item key={product.name} >
+        <Grid item key={product.id} sx={{ maxWidth: '22%' }} >
             <Card>
                 <CardContent>
                     <Typography variant='h6' >
-                        {product.name}
+                       Name: {product.name}
                     </Typography>
+
+                    <img style={{maxWidth: '70%'}} src={product.avatar} alt="" />
 
                      <Typography variant='body1' >
-                        {product.price}
+                       Price: ${product.price}
                     </Typography>
 
                      <Typography variant='body2' >
-                        {product.description}
+                       Description: {product.description}
                     </Typography>
 
                      <Typography variant='body2' >
-                        {product.category}
+                       Category: {product.category.name}
+                    </Typography>
+
+                     <Typography variant='body2' >
+                       Stock: {product.stock}
+                    </Typography>
+
+                     <Typography variant='body2' >
+                       Status: {product.status}
                     </Typography>
 
                 </CardContent>
