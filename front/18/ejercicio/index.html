@@ -10,9 +10,19 @@
     <div class="container">
         <h1>Mi Lista de Tareas</h1>
 
-        <input type="text" id="taskInput" placeholder="Escribe una nueva tarea..." maxlength="50" required>
+        <input type="text" 
+               id="taskInput" 
+               placeholder="Escribe una nueva tarea..." 
+               maxlength="50" 
+               required
+               aria-label="Nueva tarea"
+               aria-describedby="task-help">
+        
+        <small id="task-help" class="help-text">
+            Presiona Enter o haz clic en "Agregar Tarea"
+        </small>
 
-        <button id="addTaskBtn">Agregar Tarea</button>
+        <button id="addTaskBtn" aria-label="Agregar nueva tarea">Agregar Tarea</button>
 
         <ul id="taskList">
             </ul>

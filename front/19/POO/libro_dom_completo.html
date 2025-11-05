@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Libro - DOM</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #34495e;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #e9ecef;
+        }
+
+        .form-section h3 {
+            margin-top: 0;
+            color: #e74c3c;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        input, select {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        button {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .success {
+            background: #2ecc71;
+        }
+
+        .success:hover {
+            background: #27ae60;
+        }
+
+        .warning {
+            background: #f39c12;
+        }
+
+        .warning:hover {
+            background: #e67e22;
+        }
+
+        .error {
+            background: #e74c3c;
+        }
+
+        .error:hover {
+            background: #c0392b;
+        }
+
+        #lista-libros {
+            margin: 20px 0;
+        }
+
+        .libro-item {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .libro-item h4 {
+            margin-top: 0;
+            color: white;
+            font-size: 1.3em;
+        }
+
+        .libro-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .libro-detail {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .libro-detail strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .libro-detail span {
+            color: #ecf0f1;
+        }
+
+        .libro-actions {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .libro-actions button {
+            margin: 5px;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .output {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .stats {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #e9ecef;
+        }
+
+        .stats h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .stat-item {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Clase Libro - Interfaz DOM</h1>
+        
+        <div class="form-section">
+            <h3>📝 Crear Nuevo Libro</h3>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="titulo">Título del Libro:</label>
+                    <input type="text" id="titulo" placeholder="Ej: Cien años de soledad" value="Cien años de soledad">
+                </div>
+                
+                <div class="form-group">
+                    <label for="isbn">ISBN:</label>
+                    <input type="text" id="isbn" placeholder="Ej: 978-84-376-0494-7" value="978-84-376-0494-7">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="genero">Género:</label>
+                    <select id="genero">
+                        <option value="Realismo mágico">Realismo mágico</option>
+                        <option value="Novela">Novela</option>
+                        <option value="Cuentos">Cuentos</option>
+                        <option value="Poesía">Poesía</option>
+                        <option value="Ensayo">Ensayo</option>
+                        <option value="Biografía">Biografía</option>
+                        <option value="Ciencia ficción">Ciencia ficción</option>
+                        <option value="Fantasía">Fantasía</option>
+                        <option value="Misterio">Misterio</option>
+                        <option value="Romance">Romance</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="autor">Autor:</label>
+                    <input type="text" id="autor" placeholder="Ej: Gabriel García Márquez" value="Gabriel García Márquez">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="paginas">Número de Páginas:</label>
+                    <input type="number" id="paginas" placeholder="Ej: 496" value="496" min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="anio">Año de Publicación:</label>
+                    <input type="number" id="anio" placeholder="Ej: 1967" value="1967" min="1000" max="2024">
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button id="crear-libro" class="success">📚 Crear Libro</button>
+                <button onclick="limpiarFormulario()" class="warning">🧹 Limpiar</button>
+                <button onclick="cargarEjemplos()" class="warning">📚 Cargar Ejemplos</button>
+            </div>
+        </div>
+
+        <div class="stats">
+            <h3>📊 Estadísticas</h3>
+            <div id="estadisticas">
+                <span class="stat-item">Total libros: 0</span>
+                <span class="stat-item">Géneros: 0</span>
+                <span class="stat-item">Autores: 0</span>
+            </div>
+        </div>
+
+        <h2>📚 Lista de Libros</h2>
+        <div id="lista-libros">
+            <div class="empty-state">
+                No hay libros creados aún. ¡Crea tu primer libro!
+            </div>
+        </div>
+
+        <div id="output" class="output">Haz clic en "Crear Libro" para comenzar...</div>
+    </div>
+
+    <script>
+        // ============================================
+        // CLASE LIBRO (EXACTA COMO SOLICITADA)
+        // ============================================
+
+        class Libro {
+            // Atributos
+            titulo;
+            ISBN;
+            genero;
+            autor;
+            paginas;
+            anio;
+            
+            // Constructor
+            constructor(titulo, ISBN, genero, autor, paginas, anio) {
+                this.titulo = titulo;
+                this.ISBN = ISBN;
+                this.genero = genero;
+                this.autor = autor;
+                this.paginas = paginas;
+                this.anio = anio;
+                this.paginaActual = 0;  // Agregado para el método getInfo
+                this.leido = false;     // Agregado para el método getInfo
+            }
+            
+            // Métodos
+            getInfo() {
+                return {
+                    titulo: this.titulo,
+                    ISBN: this.ISBN,
+                    genero: this.genero,
+                    autor: this.autor,
+                    paginas: this.paginas,
+                    paginaActual: this.paginaActual,
+                    anio: this.anio,
+                    leido: this.leido,
+                };
+            }
+        }
+
+        // ============================================
+        // ELEMENTOS DOM (EXACTOS COMO SOLICITADOS)
+        // ============================================
+
+        let titulo = document.getElementById("titulo");
+        let isbn = document.getElementById("isbn");
+        let genero = document.getElementById("genero");
+        let autor = document.getElementById("autor");
+        let paginas = document.getElementById("paginas");
+        let anio = document.getElementById("anio");
+
+        let button = document.getElementById("crear-libro");
+        let lista = document.getElementById("lista-libros");
+
+        // ============================================
+        // VARIABLES GLOBALES
+        // ============================================
+
+        let libros = []; // Array para almacenar todos los libros
+
+        // ============================================
+        // FUNCIONES PRINCIPALES
+        // ============================================
+
+        function crearLibro() {
+            // Validar campos
+            if (!titulo.value.trim() || !isbn.value.trim() || !autor.value.trim()) {
+                mostrarMensaje("❌ ERROR: Completa todos los campos obligatorios");
+                return;
+            }
+
+            if (!paginas.value || paginas.value <= 0) {
+                mostrarMensaje("❌ ERROR: El número de páginas debe ser mayor a 0");
+                return;
+            }
+
+            if (!anio.value || anio.value < 1000 || anio.value > 2024) {
+                mostrarMensaje("❌ ERROR: El año debe estar entre 1000 y 2024");
+                return;
+            }
+
+            // Crear nuevo libro
+            const nuevoLibro = new Libro(
+                titulo.value.trim(),
+                isbn.value.trim(),
+                genero.value,
+                autor.value.trim(),
+                parseInt(paginas.value),
+                parseInt(anio.value)
+            );
+
+            // Agregar a la lista
+            libros.push(nuevoLibro);
+
+            // Actualizar interfaz
+            actualizarListaLibros();
+            actualizarEstadisticas();
+            mostrarMensaje(`✅ Libro "${nuevoLibro.titulo}" creado exitosamente`);
+
+            // Limpiar formulario
+            limpiarFormulario();
+        }
+
+        function actualizarListaLibros() {
+            if (libros.length === 0) {
+                lista.innerHTML = `
+                    <div class="empty-state">
+                        No hay libros creados aún. ¡Crea tu primer libro!
+                    </div>
+                `;
+                return;
+            }
+
+            lista.innerHTML = libros.map((libro, index) => `
+                <div class="libro-item">
+                    <h4>📚 ${libro.titulo}</h4>
+                    <div class="libro-info">
+                        <div class="libro-detail">
+                            <strong>👤 Autor</strong>
+                            <span>${libro.autor}</span>
+                        </div>
+                        <div class="libro-detail">
+                            <strong>📖 Género</strong>
+                            <span>${libro.genero}</span>
+                        </div>
+                        <div class="libro-detail">
+                            <strong>📅 Año</strong>
+                            <span>${libro.anio}</span>
+                        </div>
+                        <div class="libro-detail">
+                            <strong>📄 Páginas</strong>
+                            <span>${libro.paginas}</span>
+                        </div>
+                        <div class="libro-detail">
+                            <strong>📋 ISBN</strong>
+                            <span>${libro.ISBN}</span>
+                        </div>
+                        <div class="libro-detail">
+                            <strong>📊 Estado</strong>
+                            <span>${libro.leido ? '✅ Leído' : '📖 Por leer'}</span>
+                        </div>
+                    </div>
+                    <div class="libro-actions">
+                        <button onclick="mostrarInfoLibro(${index})" class="success">📋 Ver Info</button>
+                        <button onclick="marcarComoLeido(${index})" class="warning">✅ Marcar Leído</button>
+                        <button onclick="eliminarLibro(${index})" class="error">🗑️ Eliminar</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function actualizarEstadisticas() {
+            const totalLibros = libros.length;
+            const generosUnicos = [...new Set(libros.map(libro => libro.genero))].length;
+            const autoresUnicos = [...new Set(libros.map(libro => libro.autor))].length;
+
+            document.getElementById('estadisticas').innerHTML = `
+                <span class="stat-item">Total libros: ${totalLibros}</span>
+                <span class="stat-item">Géneros: ${generosUnicos}</span>
+                <span class="stat-item">Autores: ${autoresUnicos}</span>
+            `;
+        }
+
+        function mostrarInfoLibro(index) {
+            const libro = libros[index];
+            const info = libro.getInfo();
+            
+            mostrarMensaje(`📋 INFORMACIÓN COMPLETA DEL LIBRO "${libro.titulo}":`);
+            mostrarMensaje(JSON.stringify(info, null, 2));
+        }
+
+        function marcarComoLeido(index) {
+            const libro = libros[index];
+            libro.leido = true;
+            libro.paginaActual = libro.paginas;
+            
+            actualizarListaLibros();
+            mostrarMensaje(`✅ Libro "${libro.titulo}" marcado como leído`);
+        }
+
+        function eliminarLibro(index) {
+            const libro = libros[index];
+            libros.splice(index, 1);
+            
+            actualizarListaLibros();
+            actualizarEstadisticas();
+            mostrarMensaje(`🗑️ Libro "${libro.titulo}" eliminado`);
+        }
+
+        function limpiarFormulario() {
+            titulo.value = '';
+            isbn.value = '';
+            genero.value = 'Realismo mágico';
+            autor.value = '';
+            paginas.value = '';
+            anio.value = '';
+        }
+
+        function cargarEjemplos() {
+            const ejemplos = [
+                {
+                    titulo: 'Cien años de soledad',
+                    isbn: '978-84-376-0494-7',
+                    genero: 'Realismo mágico',
+                    autor: 'Gabriel García Márquez',
+                    paginas: 496,
+                    anio: 1967
+                },
+                {
+                    titulo: 'Rayuela',
+                    isbn: '978-84-376-0123-4',
+                    genero: 'Novela experimental',
+                    autor: 'Julio Cortázar',
+                    paginas: 736,
+                    anio: 1963
+                },
+                {
+                    titulo: 'Ficciones',
+                    isbn: '978-84-376-0789-0',
+                    genero: 'Cuentos',
+                    autor: 'Jorge Luis Borges',
+                    paginas: 200,
+                    anio: 1944
+                }
+            ];
+
+            ejemplos.forEach(ejemplo => {
+                const libro = new Libro(
+                    ejemplo.titulo,
+                    ejemplo.isbn,
+                    ejemplo.genero,
+                    ejemplo.autor,
+                    ejemplo.paginas,
+                    ejemplo.anio
+                );
+                libros.push(libro);
+            });
+
+            actualizarListaLibros();
+            actualizarEstadisticas();
+            mostrarMensaje(`📚 ${ejemplos.length} libros de ejemplo cargados`);
+        }
+
+        function mostrarMensaje(mensaje) {
+            const output = document.getElementById('output');
+            output.textContent += mensaje + '\n';
+            output.scrollTop = output.scrollHeight;
+        }
+
+        // ============================================
+        // EVENT LISTENERS
+        // ============================================
+
+        // Event listener para el botón crear libro
+        button.addEventListener('click', crearLibro);
+
+        // Event listener para Enter en los campos
+        [titulo, isbn, genero, autor, paginas, anio].forEach(campo => {
+            campo.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    crearLibro();
+                }
+            });
+        });
+
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+
+        mostrarMensaje('🎯 Aplicación iniciada - Clase Libro con DOM');
+        mostrarMensaje('💡 Completa el formulario y haz clic en "Crear Libro"');
+        mostrarMensaje('📚 O usa "Cargar Ejemplos" para ver libros predefinidos');
+    </script>
+</body>
+</html>

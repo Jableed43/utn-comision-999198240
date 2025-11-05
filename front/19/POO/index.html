@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Orientada a Objetos - UTN</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #34495e;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #e74c3c;
+            margin-top: 25px;
+        }
+
+        .code-section {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .output {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        button {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .button-group {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .concept-box {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .concept-box h4 {
+            margin-top: 0;
+            color: white;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .example-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: #6c757d;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: #3498db;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><span class="emoji">🎓</span> Programación Orientada a Objetos</h1>
+        <h2 style="text-align: center; color: #7f8c8d;">Material para Clase Inicial - UTN</h2>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('conceptos')">📚 Conceptos</button>
+            <button class="tab" onclick="showTab('ejemplos')">💻 Ejemplos</button>
+            <button class="tab" onclick="showTab('practica')">🎯 Práctica</button>
+        </div>
+
+        <div id="conceptos" class="tab-content active">
+            <h2><span class="emoji">🏗️</span> Conceptos Fundamentales</h2>
+            
+            <div class="concept-box">
+                <h4><span class="emoji">🎯</span> ¿Qué es la POO?</h4>
+                <p>La <span class="highlight">Programación Orientada a Objetos</span> es un paradigma que organiza el código en torno a <strong>objetos</strong> que contienen tanto datos (atributos) como código (métodos).</p>
+            </div>
+
+            <div class="example-grid">
+                <div class="example-card">
+                    <h3><span class="emoji">📋</span> Clase</h3>
+                    <p>Es como un <strong>molde</strong> o plantilla que define qué características tendrán los objetos y qué acciones podrán realizar.</p>
+                    <div class="code-section">
+class Auto {<br>
+&nbsp;&nbsp;constructor(marca, modelo) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.marca = marca;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.modelo = modelo;<br>
+&nbsp;&nbsp;}<br>
+}
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3><span class="emoji">🚗</span> Objeto</h3>
+                    <p>Es una <strong>instancia específica</strong> de una clase. Es como crear un auto real usando el molde.</p>
+                    <div class="code-section">
+const miAuto = new Auto("Toyota", "Corolla");
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3><span class="emoji">🏷️</span> Atributos</h3>
+                    <p>Son las <strong>características</strong> que describen al objeto.</p>
+                    <div class="code-section">
+this.marca = "Toyota";<br>
+this.modelo = "Corolla";<br>
+this.color = "azul";
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3><span class="emoji">⚙️</span> Métodos</h3>
+                    <p>Son las <strong>acciones</strong> que puede realizar el objeto.</p>
+                    <div class="code-section">
+encender() {<br>
+&nbsp;&nbsp;console.log("Auto encendido");<br>
+}<br>
+acelerar(velocidad) {<br>
+&nbsp;&nbsp;console.log(`Acelerando a ${velocidad} km/h`);<br>
+}
+                    </div>
+                </div>
+            </div>
+
+            <h2><span class="emoji">🎨</span> Los 4 Pilares de la POO</h2>
+
+            <div class="example-grid">
+                <div class="example-card">
+                    <h3><span class="emoji">📦</span> Encapsulación</h3>
+                    <p>Ocultar los detalles internos del objeto y solo exponer lo necesario.</p>
+                </div>
+
+                <div class="example-card">
+                    <h3><span class="emoji">👨‍👩‍👧‍👦</span> Herencia</h3>
+                    <p>Crear nuevas clases basadas en clases existentes, heredando sus características.</p>
+                </div>
+
+                <div class="example-card">
+                    <h3><span class="emoji">🎭</span> Polimorfismo</h3>
+                    <p>Diferentes objetos responden de manera diferente al mismo mensaje.</p>
+                </div>
+
+                <div class="example-card">
+                    <h3><span class="emoji">🎯</span> Abstracción</h3>
+                    <p>Enfocarse en las características esenciales, ocultando detalles innecesarios.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="ejemplos" class="tab-content">
+            <h2><span class="emoji">💻</span> Ejemplos Prácticos</h2>
+            
+            <div class="button-group">
+                <button onclick="ejecutarEjemploBasico()">🚗 Ejemplo Básico - Auto</button>
+                <button onclick="ejecutarEjemploLibro()">📚 Ejemplo - Libro</button>
+                <button onclick="ejecutarEjemploCuenta()">💳 Ejemplo - Cuenta Bancaria</button>
+                <button onclick="ejecutarEjemploCompleto()">🏪 Ejemplo Completo - Tienda</button>
+            </div>
+
+            <div id="output" class="output">Haz clic en un botón para ver el ejemplo...</div>
+        </div>
+
+        <div id="practica" class="tab-content">
+            <h2><span class="emoji">🎯</span> Ejercicios Prácticos</h2>
+            
+            <div class="concept-box">
+                <h4><span class="emoji">📝</span> Ejercicio 1: Clase Estudiante</h4>
+                <p>Crea una clase <span class="highlight">Estudiante</span> con:</p>
+                <ul>
+                    <li>Atributos: nombre, edad, carrera, materiasAprobadas</li>
+                    <li>Métodos: aprobarMateria(), mostrarPromedio(), cambiarCarrera()</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4><span class="emoji">🏠</span> Ejercicio 2: Clase Casa</h4>
+                <p>Crea una clase <span class="highlight">Casa</span> con:</p>
+                <ul>
+                    <li>Atributos: direccion, habitaciones, metrosCuadrados, precio</li>
+                    <li>Métodos: calcularPrecioPorMetro(), agregarHabitacion(), mostrarInfo()</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4><span class="emoji">🎮</span> Ejercicio 3: Herencia - Videojuegos</h4>
+                <p>Crea una clase padre <span class="highlight">Videojuego</span> y clases hijas:</p>
+                <ul>
+                    <li><span class="highlight">VideojuegoAccion</span> - con atributo: nivelViolencia</li>
+                    <li><span class="highlight">VideojuegoEstrategia</span> - con atributo: complejidad</li>
+                </ul>
+            </div>
+
+            <div class="button-group">
+                <button onclick="mostrarSoluciones()">💡 Ver Soluciones</button>
+            </div>
+
+            <div id="soluciones" class="output" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="poo.js"></script>
+    <script src="ejemplos_practicos.js"></script>
+    <script>
+        function showTab(tabName) {
+            // Ocultar todos los contenidos
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remover clase active de todos los tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Mostrar el contenido seleccionado
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function ejecutarEjemploBasico() {
+            const output = document.getElementById('output');
+            output.textContent = '';
+            
+            // Capturar console.log
+            const originalLog = console.log;
+            console.log = function(...args) {
+                output.textContent += args.join(' ') + '\n';
+                originalLog.apply(console, args);
+            };
+            
+            // Ejecutar ejemplo básico
+            const fiatSiena = new Auto("Fiat", "Siena", 2005, "sedan", 200000, "gris", 1.6, "nafta", true, 4000000, 4);
+            fiatSiena.mostrarEstado();
+            fiatSiena.encenderApagar();
+            fiatSiena.acelerar(50);
+            fiatSiena.frenar(20);
+            fiatSiena.cambiarColor("rojo");
+            fiatSiena.mostrarEstado();
+            
+            // Restaurar console.log
+            console.log = originalLog;
+        }
+
+        function ejecutarEjemploLibro() {
+            const output = document.getElementById('output');
+            output.textContent = '';
+            
+            const originalLog = console.log;
+            console.log = function(...args) {
+                output.textContent += args.join(' ') + '\n';
+                originalLog.apply(console, args);
+            };
+            
+            const libro1 = new Libro("El Quijote", "Miguel de Cervantes", 863, 1605);
+            libro1.mostrarInfo();
+            libro1.leer(50);
+            libro1.leer(50);
+            libro1.mostrarInfo();
+            
+            console.log = originalLog;
+        }
+
+        function ejecutarEjemploCuenta() {
+            const output = document.getElementById('output');
+            output.textContent = '';
+            
+            const originalLog = console.log;
+            console.log = function(...args) {
+                output.textContent += args.join(' ') + '\n';
+                originalLog.apply(console, args);
+            };
+            
+            const cuenta = new CuentaBancaria("Juan Pérez", "123456789", 100000);
+            cuenta.consultarSaldo();
+            cuenta.depositar(50000, "Sueldo");
+            cuenta.retirar(25000, "Compra");
+            cuenta.verHistorial();
+            
+            console.log = originalLog;
+        }
+
+        function ejecutarEjemploCompleto() {
+            const output = document.getElementById('output');
+            output.textContent = '';
+            
+            const originalLog = console.log;
+            console.log = function(...args) {
+                output.textContent += args.join(' ') + '\n';
+                originalLog.apply(console, args);
+            };
+            
+            const miTienda = new Tienda("TechStore", "Av. Principal 123");
+            const producto1 = new Producto("Laptop", 1500000, "Electrónicos", 10);
+            const producto2 = new Producto("Mouse", 25000, "Electrónicos", 50);
+            
+            miTienda.agregarProducto(producto1);
+            miTienda.agregarProducto(producto2);
+            miTienda.mostrarInventario();
+            miTienda.venderProducto("Laptop", 1);
+            miTienda.venderProducto("Mouse", 3);
+            miTienda.mostrarVentas();
+            
+            console.log = originalLog;
+        }
+
+        function mostrarSoluciones() {
+            const soluciones = document.getElementById('soluciones');
+            if (soluciones.style.display === 'none') {
+                soluciones.style.display = 'block';
+                soluciones.textContent = `
+// SOLUCIÓN EJERCICIO 1: Clase Estudiante
+class Estudiante {
+    constructor(nombre, edad, carrera) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.carrera = carrera;
+        this.materiasAprobadas = [];
+    }
+    
+    aprobarMateria(materia, nota) {
+        this.materiasAprobadas.push({materia, nota});
+        console.log(\`✅ \${materia} aprobada con nota \${nota}\`);
+    }
+    
+    mostrarPromedio() {
+        if (this.materiasAprobadas.length === 0) {
+            console.log("No hay materias aprobadas");
+            return 0;
+        }
+        
+        const suma = this.materiasAprobadas.reduce((total, mat) => total + mat.nota, 0);
+        const promedio = suma / this.materiasAprobadas.length;
+        console.log(\`Promedio: \${promedio.toFixed(2)}\`);
+        return promedio;
+    }
+    
+    cambiarCarrera(nuevaCarrera) {
+        const carreraAnterior = this.carrera;
+        this.carrera = nuevaCarrera;
+        console.log(\`Carrera cambiada de \${carreraAnterior} a \${nuevaCarrera}\`);
+    }
+}
+
+// SOLUCIÓN EJERCICIO 2: Clase Casa
+class Casa {
+    constructor(direccion, habitaciones, metrosCuadrados, precio) {
+        this.direccion = direccion;
+        this.habitaciones = habitaciones;
+        this.metrosCuadrados = metrosCuadrados;
+        this.precio = precio;
+    }
+    
+    calcularPrecioPorMetro() {
+        return this.precio / this.metrosCuadrados;
+    }
+    
+    agregarHabitacion() {
+        this.habitaciones++;
+        console.log(\`Habitación agregada. Total: \${this.habitaciones}\`);
+    }
+    
+    mostrarInfo() {
+        console.log(\`Casa en \${this.direccion}\`);
+        console.log(\`Habitaciones: \${this.habitaciones}\`);
+        console.log(\`Metros cuadrados: \${this.metrosCuadrados}\`);
+        console.log(\`Precio: $\${this.precio.toLocaleString()}\`);
+        console.log(\`Precio por m²: $\${this.calcularPrecioPorMetro().toFixed(2)}\`);
+    }
+}
+
+// SOLUCIÓN EJERCICIO 3: Herencia Videojuegos
+class Videojuego {
+    constructor(titulo, desarrollador, año, precio) {
+        this.titulo = titulo;
+        this.desarrollador = desarrollador;
+        this.año = año;
+        this.precio = precio;
+    }
+    
+    mostrarInfo() {
+        console.log(\`\${this.titulo} (\${this.año}) - $\${this.precio}\`);
+    }
+}
+
+class VideojuegoAccion extends Videojuego {
+    constructor(titulo, desarrollador, año, precio, nivelViolencia) {
+        super(titulo, desarrollador, año, precio);
+        this.nivelViolencia = nivelViolencia;
+    }
+    
+    mostrarInfo() {
+        super.mostrarInfo();
+        console.log(\`Nivel de violencia: \${this.nivelViolencia}/10\`);
+    }
+}
+
+class VideojuegoEstrategia extends Videojuego {
+    constructor(titulo, desarrollador, año, precio, complejidad) {
+        super(titulo, desarrollador, año, precio);
+        this.complejidad = complejidad;
+    }
+    
+    mostrarInfo() {
+        super.mostrarInfo();
+        console.log(\`Complejidad: \${this.complejidad}\`);
+    }
+}
+                `;
+            } else {
+                soluciones.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
